@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import hmac, base64, struct, hashlib, time, getpass, sys
 
@@ -6,7 +6,7 @@ def get_hotp_token(secret, intervals_no):
     key = base64.b32decode(secret, True)
     msg = struct.pack(">Q", intervals_no)
     h = hmac.new(key, msg, hashlib.sha1).digest()
-    o = ord(h[19]) & 15
+    o = h[19] & 15
     h = (struct.unpack(">I", h[o:o+4])[0] & 0x7fffffff) % 1000000
     return h
 
@@ -36,10 +36,10 @@ if len(sys.argv)>1:
             idx = line.find(' ')
             secret = line[:idx]
             comment = line[idx+1:]
-            print get_code(secret), comment
+            print(get_code(secret), comment)
 else:
     secret=getpass.getpass("Enter your Google Authenticator secret: ").upper().replace(" ", "")
-    print get_code(secret)
+    print(get_code(secret))
 
 
 
