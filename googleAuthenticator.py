@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import hmac, base64, struct, hashlib, time, getpass, sys
+import hmac, base64, struct, hashlib, time, getpass, sys, pyperclip
 
 def get_hotp_token(secret, intervals_no):
     key = base64.b32decode(secret, True)
@@ -39,17 +39,7 @@ if len(sys.argv)>1:
             print(get_code(secret), comment)
 else:
     secret=getpass.getpass("Enter your Google Authenticator secret: ").upper().replace(" ", "")
-    print(get_code(secret))
-
-
-
-#with open(fname) as f:
-#    content = f.readlines()
-# you may also want to remove whitespace characters like `\n` at the end of each line
-#content = [x.strip() for x in content]
-
-
-
-
-
+    code = get_code(secret)
+    pyperclip.copy(code)
+    print("copied to clipboard: ", code)
 
