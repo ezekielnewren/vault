@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=mono /home/zeke/software/keepass/KeePass.exe %u
+Icon=/home/zeke/software/keepass/KeePass.png
+Name=KeePass
+Terminal=false
+Type=Application
+#Version=1.0
+
+

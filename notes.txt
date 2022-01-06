@@ -1,0 +1,1 @@
+[Environment]::SetEnvironmentVariable("SSH_AUTH_SOCK", "$env:USERPROFILE\keeagent.sock", "User")
